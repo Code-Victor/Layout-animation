@@ -3,26 +3,54 @@ import { styled } from "@stitches/react";
 import { motion } from "framer-motion";
 import Box from "./Box";
 
+
+// for local set up
+
+// const data = [
+//   {
+//     id: 1,
+//     name: "Top gun",
+//     img: "/top-gun.jpeg",
+//   },
+//   {
+//     id: 2,
+//     name: "Bad guys",
+//     img: "/bad-guys.jpeg",
+//   },
+//   {
+//     id: 3,
+//     name: "Jurassic world",
+//     img: "/jurassic-world.jpeg",
+//   },
+//   {
+//     id: 4,
+//     name: "Doctor strange",
+//     img: "/doctor-strange.jpeg",
+//   },
+// ];
+
+
+// for deploying to github pages with vite
 const data = [
   {
     id: 1,
     name: "Top gun",
-    img: "/top-gun.jpeg",
+    img: "/Layout-animation/top-gun.jpeg",
   },
   {
     id: 2,
     name: "Bad guys",
-    img: "/bad-guys.jpeg",
+    img: "/Layout-animation/bad-guys.jpeg",
   },
   {
     id: 3,
     name: "Jurassic world",
-    img: "/jurassic-world.jpeg",
+    img: "/Layout-animation/jurassic-world.jpeg",
   },
   {
     id: 4,
     name: "Doctor strange",
-    img: "/doctor-strange.jpeg",
+    img: "/Layout-animation/doctor-strange.jpeg",
   },
 ];
 
@@ -50,6 +78,8 @@ const MainCard = styled(motion.div, {
   flexDirection: "column",
   maxWidth: 480,
   background: "white",
+  marginLeft:10, 
+  marginRight:10, 
   "& img": {
     width: "100%",
     maxHeight: 480,
@@ -64,7 +94,15 @@ const Cards = ({ placeholder=false }: { placeholder?: boolean }) => {
   return (
     <>
       <Box
-        css={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 20 }}
+        css={{
+          display: "grid",
+          gap: 20,
+          padding:10,
+          "@media (min-width:640px)": {
+            gridTemplateColumns: "repeat(2,1fr)",
+           
+          },
+        }}
       >
         {data.map((item, i) => {
           if (selected === item.id) {
@@ -109,7 +147,7 @@ const Cards = ({ placeholder=false }: { placeholder?: boolean }) => {
           css={{
             display: "grid",
             placeItems: "center",
-            position: "absolute",
+            position: "fixed",
             inset: 0,
           }}
         >
